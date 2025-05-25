@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fake News Detector - Researcher</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Roboto', sans-serif;
+            display: flex;
+            height: 100vh;
+        }
+
+        /* Sidebar styles */
+        .sidebar {
+            width: 220px;
+            background-color: #2c3e50;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+            box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+        }
+
+        .sidebar h1 {
+            font-size: 22px;
+            margin-bottom: 30px;
+        }
+
+        .sidebar a {
+            color: #ecf0f1;
+            text-decoration: none;
+            margin: 10px 0;
+            font-size: 16px;
+            transition: color 0.3s ease;
+        }
+
+        .sidebar a:hover {
+            color: #1abc9c;
+        }
+
+        /* Main content area */
+        .main-content {
+            flex-grow: 1;
+            padding: 40px;
+            background-color: #f4f7f8;
+            overflow-y: auto;
+        }
+
+        h2 {
+            color: #2c3e50;
+        }
+
+        .input-area input,
+        .input-area select,
+        .input-area textarea,
+        .input-area button {
+            display: block;
+            width: 100%;
+            margin: 15px 0;
+            padding: 12px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 16px;
+        }
+
+        .input-area button {
+            background-color: #1abc9c;
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .input-area button:hover {
+            background-color: #16a085;
+        }
+
+        footer {
+            margin-top: 40px;
+            text-align: center;
+            font-size: 14px;
+            color: #888;
+        }
+    </style>
+</head>
+<body>
+
+    <aside class="sidebar">
+        <h1>Research</h1>
+        <a href="#home">Home</a>
+        <a href="#how-it-works">How It Works</a>
+        <a href="#about">About Us</a>
+        <a href="#contact">Contact</a>
+    </aside>
+
+    <main class="main-content">
+        <section id="home">
+            <h2>Fake News Detector</h2>
+            <p>Paste the article below and enter details for analysis:</p>
+
+            <form class="input-area" method="POST" action="/">
+                <input type="text" name="news_title" placeholder="Enter News Title" required>
+                <textarea name="news_content" placeholder="Enter News Content" rows="6" required></textarea>
+                <select name="news_type" required>
+                    <option value="">Select News Category</option>
+                    <option value="politicsNews">Politics News</option>
+                    <option value="worldnews">World News</option>
+                    <option value="News">News</option>
+                    <option value="politics">Politics</option>
+                    <option value="left-news">Left News</option>
+                    <option value="Government News">Government News</option>
+                    <option value="US_News">US News</option>
+                    <option value="Middle-east">Middle East</option>
+                </select>
+                <input type="date" name="news_date" required>
+                <button type="submit">Analyze</button>
+            </form>
+
+            {% if prediction %}
+            <div class="result-box">
+                <h3>This News Is :</h3>
+                <p><strong>{{ prediction }}</strong></p>
+            </div>
+            {% endif %}
+        </section>
+
+        <section id="how-it-works">
+            <h2>How It Works</h2>
+            <p>
+               Research uses advanced artificial intelligence and machine learning techniques to analyze the credibility of news articles in real time. Here's a simple breakdown of how our system works:
+            </p>
+            <ol>
+            <li><strong>Text Input</strong><br>
+               Users start by entering the full news article, headline, or excerpt they want to verify.
+            </li>
+            <li><strong>Preprocessing</strong><br>
+               The text is cleaned and processed using bs4 to remove noise and extract important linguistic patterns.
+            </li>
+            <li><strong>AI Model Analysis</strong><br>
+               The processed text is analyzed by a trained machine learning model that evaluates features commonly found in real vs. fake news.
+            </li>
+            <li><strong>Credibility Scoring</strong><br>
+               The model provides a verdict — "Real" or "Fake" — along with a confidence score based on the analysis.
+            </li>
+            <li><strong>Explanation & Feedback</strong><br>
+               We show the reasoning behind the result and invite users to provide feedback for future improvements.
+            </li>
+            </ol>
+            <p>
+               While Research is a powerful tool, we encourage users to treat its results as guidance. Always cross-check with reliable sources before drawing conclusions.
+           </p>
+        </section>
+
+        <section id="about">
+            <h2>About Us</h2>
+            <p>At Research, we’re redefining the way people engage with digital news. Our platform is powered by AI-driven analysis to help users detect misleading, biased, or entirely false content at the click of a button.</p>
+            <p>With the rise of misinformation, we believe in equipping individuals, educators, and journalists with the tools to validate information in real time. Our team combines expertise in data science, cybersecurity, and user experience design to deliver a solution that’s smart, secure, and scalable.</p>
+            <p>Research is more than a fake news detector—it's a step toward restoring trust in online information and promoting digital responsibility. We're committed to ethical AI and continuous innovation to meet the evolving challenges of the information age.</p>
+        </section>
+
+        <section id="contact">
+            <h2>Contact</h2>
+            <p>Email: <a href="mailto:your.email@example.com">deepakkpasi@gmail.com</a></p>
+            <div class="social-icons">
+              <a href="https://github.com/Deepak-Byte" target="_blank"><i class="fab fa-github"></i></a>
+              <a href="https://instagram.com/deepakkpasi" target="_blank"><i class="fab fa-instagram"></i></a>
+              <a href="https://facebook.com/deepakkumar.pasi.79" target="_blank"><i class="fab fa-facebook"></i></a>
+              <a href="https://twitter.com/DeepakKumarPasi" target="_blank"><i class="fab fa-twitter"></i></a>
+            </div>
+        </section>
+
+        <footer>
+            &copy; 2025 Research. All rights reserved.
+        </footer>
+    </main>
+
+    <script>
+        document.getElementById('analyzeButton').addEventListener('click', () => {
+            alert("Analysis triggered (connect this to backend in Flask).");
+        });
+    </script>
+</body>
+</html>
