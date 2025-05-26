@@ -9,4 +9,3 @@ torch
 flask
 gunicorn
 bs4
-os
