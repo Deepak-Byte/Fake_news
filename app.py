@@ -7,6 +7,9 @@ from transformers import AutoTokenizer, AutoModelForSequenceClassification
 import torch
 from flask import Flask, render_template, request
 
+tokenizer_path = os.path.join("tokenizer")
+model_path = os.path.join("model")
+
 tokenizer = AutoTokenizer.from_pretrained(r"E:\Fake_news_ditection\tokenizer")
 model = AutoModelForSequenceClassification.from_pretrained(r"E:\Fake_news_ditection\model")
 
