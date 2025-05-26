@@ -1,5 +1,5 @@
 # 🧠 Intelligent Fake News Detection using Transformer Networks
-📌 Overview
+## 📌 Overview
 This project implements a fake news classification system using a fine-tuned Transformer model (DistilBERT). It takes user input such as news title, content, subject, and date, and predicts whether the news is REAL or FAKE.
 
 📝 Introduction
