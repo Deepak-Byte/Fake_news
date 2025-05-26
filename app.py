@@ -6,6 +6,7 @@ import string
 from transformers import AutoTokenizer, AutoModelForSequenceClassification
 import torch
 from flask import Flask, render_template, request
+import os
 
 tokenizer_path = os.path.join("tokenizer")
 model_path = os.path.join("model")
