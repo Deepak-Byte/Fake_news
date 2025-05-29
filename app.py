@@ -12,8 +12,11 @@ from flask import Flask, render_template, request
 tokenizer_path = os.path.join("tokenizer")
 model_path = os.path.join("model")
 
-tokenizer = AutoTokenizer.from_pretrained(r"E:\Fake_news_ditection\tokenizer")
-model = AutoModelForSequenceClassification.from_pretrained(r"E:\Fake_news_ditection\model")
+tokenizer = AutoTokenizer.from_pretrained(r"tokenizer")
+model = AutoModelForSequenceClassification.from_pretrained(r"model")
+
+# tokenizer = AutoTokenizer.from_pretrained(r"E:\Fake_news_ditection\tokenizer")
+# model = AutoModelForSequenceClassification.from_pretrained(r"E:\Fake_news_ditection\model")
 
 def remove_html(text):
     """Removes HTML tags from text."""
